@@ -30,11 +30,11 @@ class Instansi extends CI_Controller {
 	//     $this->load->view('template',$data);
 	// }
 
-	// public function hapus_sifat($id){
- //        $message = $this->Msifat->hapus_sifat($id);
- //        //$this->session->set_flashdata("message",$message);
- //        redirect("sifat");
- //    }
+	public function hapus_instansi($id){
+        $message = $this->Minstansi->hapus_instansi($id);
+        //$this->session->set_flashdata("message",$message);
+        redirect("instansi");
+    }
 
 	public function simpan_instansi($action){
         $message = $this->Minstansi->simpan_instansi($action);
