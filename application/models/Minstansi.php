@@ -23,6 +23,12 @@
 	   	function simpan_instansi($aksi) {
 	   		$data = array(
 	   					'nama_instansi'  => $this->input->post('nama_instansi'), 
+	   					'alamat'  => $this->input->post('alamat'), 
+	   					'email'  => $this->input->post('email'), 
+	   					'telp'  => $this->input->post('telp'), 
+	   					'nama_pimpinan'  => $this->input->post('nama_pimpinan'), 
+	   					'nik_pimpinan'  => $this->input->post('nik_pimpinan'), 
+	   					'logo'  => $this->input->post('logo'), 
 			);
 
 			switch ($aksi) {
@@ -37,13 +43,13 @@
 					break;
 			}
 			
-			return "success-Data Klasifikasi berhasil disimpan";
+			return "success-Data Instansi berhasil disimpan";
 	   	}
 
-	   	// function hapus_klasifikasi($id) {
-	   	// 	$this->db->where('id_klasifikasi',$id);
-	   	// 	$this->db->delete('klasifikasi');
-	   	// 	return "danger-Data Klasifikasi berhasil di hapus";
-	   	// }
+	   	function hapus_instansi($id) {
+	   		$this->db->where('id_instansi',$id);
+	   		$this->db->delete('instansi');
+	   		return "danger-Data Instansi berhasil di hapus";
+	   	}
 	}
 ?>
