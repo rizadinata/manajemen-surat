@@ -5,11 +5,11 @@ class Posisi extends CI_Controller {
 	function __construct() {
 	    parent::__construct();
 	    $this->load->Model('Mposisi');
-	    // $this->load->Model('Muser');
-	    // if (($this->session->userdata('id_user') == NULL) || ($this->session->userdata('id_level') == NULL) || ($this->session->userdata('email') == NULL))
-	    // {
-	    //        redirect("login/logout_admin","refresh");
-	    // }
+	    $this->load->Model('Muser');
+	    if (($this->session->userdata('id_user') == NULL) || ($this->session->userdata('id_level') == NULL) || ($this->session->userdata('email') == NULL))
+	    {
+	           redirect("login/logout_admin","refresh");
+	    }
 	}
 
 	public function index() {
@@ -32,13 +32,13 @@ class Posisi extends CI_Controller {
 
 	public function hapus_posisi($id){
         $message = $this->Mposisi->hapus_posisi($id);
-        //$this->session->set_flashdata("message",$message);
+        $this->session->set_flashdata("message",$message);
         redirect("posisi");
     }
 
 	public function simpan_posisi($action){
         $message = $this->Mposisi->simpan_posisi($action);
-       // $this->session->set_flashdata("message",$message);
+        $this->session->set_flashdata("message",$message);
         redirect("posisi");
     }
 }
