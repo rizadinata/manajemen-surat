@@ -6,10 +6,10 @@ class Instansi extends CI_Controller {
 	    parent::__construct();
 	    $this->load->Model('Minstansi');
 	    // $this->load->Model('Muser');
-	    // if (($this->session->userdata('id_user') == NULL) || ($this->session->userdata('id_level') == NULL) || ($this->session->userdata('email') == NULL))
-	    // {
-	    //        redirect("login/logout_admin","refresh");
-	    // }
+	    if (($this->session->userdata('username') == NULL) || ($this->session->userdata('id_role') == NULL) || ($this->session->userdata('nama_user') == NULL))
+	    {
+	           redirect("login/logout","refresh");
+	    }
 	}
 
 	public function index() {
@@ -32,13 +32,13 @@ class Instansi extends CI_Controller {
 
 	public function hapus_instansi($id){
         $message = $this->Minstansi->hapus_instansi($id);
-        //$this->session->set_flashdata("message",$message);
+        $this->session->set_flashdata("message",$message);
         redirect("instansi");
     }
 
 	public function simpan_instansi($action){
         $message = $this->Minstansi->simpan_instansi($action);
-       // $this->session->set_flashdata("message",$message);
+        $this->session->set_flashdata("message",$message);
         redirect("instansi");
     }
 }
