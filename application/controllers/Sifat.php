@@ -6,10 +6,10 @@ class Sifat extends CI_Controller {
 	    parent::__construct();
 	    $this->load->Model('Msifat');
 	    // $this->load->Model('Muser');
-	    // if (($this->session->userdata('id_user') == NULL) || ($this->session->userdata('id_level') == NULL) || ($this->session->userdata('email') == NULL))
-	    // {
-	    //        redirect("login/logout_admin","refresh");
-	    // }
+	    if (($this->session->userdata('username') == NULL) || ($this->session->userdata('id_role') == NULL) || ($this->session->userdata('nama_user') == NULL))
+	    {
+	           redirect("login/logout","refresh");
+	    }
 	}
 
 	public function index() {
@@ -32,13 +32,13 @@ class Sifat extends CI_Controller {
 
 	public function hapus_sifat($id){
         $message = $this->Msifat->hapus_sifat($id);
-        //$this->session->set_flashdata("message",$message);
+        $this->session->set_flashdata("message",$message);
         redirect("sifat");
     }
 
 	public function simpan_sifat($action){
         $message = $this->Msifat->simpan_sifat($action);
-       // $this->session->set_flashdata("message",$message);
+        $this->session->set_flashdata("message",$message);
         redirect("sifat");
     }
 }

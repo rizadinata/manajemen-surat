@@ -8,10 +8,10 @@ class User extends CI_Controller {
 	    $this->load->Model('Mrole');
 	    $this->load->Model('Mjabatan');
 	    // $this->load->Model('Muser');
-	    // if (($this->session->userdata('id_user') == NULL) || ($this->session->userdata('id_level') == NULL) || ($this->session->userdata('email') == NULL))
-	    // {
-	    //        redirect("login/logout_admin","refresh");
-	    // }
+	   if (($this->session->userdata('username') == NULL) || ($this->session->userdata('id_role') == NULL) || ($this->session->userdata('nama_user') == NULL))
+	    {
+	           redirect("login/logout","refresh");
+	    }
 	}
 
 	public function index() {
@@ -36,11 +36,13 @@ class User extends CI_Controller {
 
 	public function hapus_user($id){
         $message = $this->Muser->hapus_user($id);
+        $this->session->set_flashdata("message",$message);
         redirect("user");
     }
 
 	public function simpan_user($action){
         $message = $this->Muser->simpan_user($action);
+        $this->session->set_flashdata("message",$message);
         redirect("user");
     }
 }

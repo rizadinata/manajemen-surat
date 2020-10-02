@@ -6,10 +6,10 @@ class Role extends CI_Controller {
 	    parent::__construct();
 	    $this->load->Model('Mrole');
 	    // $this->load->Model('Muser');
-	    // if (($this->session->userdata('id_user') == NULL) || ($this->session->userdata('id_level') == NULL) || ($this->session->userdata('email') == NULL))
-	    // {
-	    //        redirect("login/logout_admin","refresh");
-	    // }
+	    if (($this->session->userdata('username') == NULL) || ($this->session->userdata('id_role') == NULL) || ($this->session->userdata('nama_user') == NULL))
+	    {
+	           redirect("login/logout","refresh");
+	    }
 	}
 
 	public function index() {
@@ -32,13 +32,13 @@ class Role extends CI_Controller {
 
 	public function hapus_role($id){
         $message = $this->Mrole->hapus_role($id);
-        //$this->session->set_flashdata("message",$message);
+        $this->session->set_flashdata("message",$message);
         redirect("role");
     }
 
 	public function simpan_role($action){
         $message = $this->Mrole->simpan_role($action);
-       // $this->session->set_flashdata("message",$message);
+        $this->session->set_flashdata("message",$message);
         redirect("role");
     }
 }
