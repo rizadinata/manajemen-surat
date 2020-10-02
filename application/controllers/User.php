@@ -36,13 +36,11 @@ class User extends CI_Controller {
 
 	public function hapus_user($id){
         $message = $this->Muser->hapus_user($id);
-        //$this->session->set_flashdata("message",$message);
         redirect("user");
     }
 
 	public function simpan_user($action){
         $message = $this->Muser->simpan_user($action);
-       // $this->session->set_flashdata("message",$message);
         redirect("user");
     }
 }
