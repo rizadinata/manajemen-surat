@@ -6,10 +6,10 @@ class Klasifikasi extends CI_Controller {
 	    parent::__construct();
 	    $this->load->Model('Mklasifikasi');
 	    // $this->load->Model('Muser');
-	    // if (($this->session->userdata('id_user') == NULL) || ($this->session->userdata('id_level') == NULL) || ($this->session->userdata('email') == NULL))
-	    // {
-	    //        redirect("login/logout_admin","refresh");
-	    // }
+	   if (($this->session->userdata('username') == NULL) || ($this->session->userdata('id_role') == NULL) || ($this->session->userdata('nama_user') == NULL))
+	    {
+	           redirect("login/logout","refresh");
+	    }
 	}
 
 	public function index() {
@@ -32,13 +32,13 @@ class Klasifikasi extends CI_Controller {
 
 	public function hapus_klasifikasi($id){
         $message = $this->Mklasifikasi->hapus_klasifikasi($id);
-        //$this->session->set_flashdata("message",$message);
+        $this->session->set_flashdata("message",$message);
         redirect("klasifikasi");
     }
 
 	public function simpan_klasifikasi($action){
         $message = $this->Mklasifikasi->simpan_klasifikasi($action);
-       // $this->session->set_flashdata("message",$message);
+        $this->session->set_flashdata("message",$message);
         redirect("klasifikasi");
     }
 }
