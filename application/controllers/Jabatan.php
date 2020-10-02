@@ -7,10 +7,10 @@ class Jabatan extends CI_Controller {
 	    $this->load->Model('Mjabatan');
 	    $this->load->Model('Mposisi');
 	    // $this->load->Model('Muser');
-	    // if (($this->session->userdata('id_user') == NULL) || ($this->session->userdata('id_level') == NULL) || ($this->session->userdata('email') == NULL))
-	    // {
-	    //        redirect("login/logout_admin","refresh");
-	    // }
+	    if (($this->session->userdata('username') == NULL) || ($this->session->userdata('id_role') == NULL) || ($this->session->userdata('nama_user') == NULL))
+	    {
+	           redirect("login/logout","refresh");
+	    }
 	}
 
 	public function index() {
@@ -34,13 +34,13 @@ class Jabatan extends CI_Controller {
 
 	public function hapus_jabatan($id){
         $message = $this->Mjabatan->hapus_jabatan($id);
-        //$this->session->set_flashdata("message",$message);
+        $this->session->set_flashdata("message",$message);
         redirect("jabatan");
     }
 
 	public function simpan_jabatan($action){
         $message = $this->Mjabatan->simpan_jabatan($action);
-       // $this->session->set_flashdata("message",$message);
+        $this->session->set_flashdata("message",$message);
         redirect("jabatan");
     }
 }
