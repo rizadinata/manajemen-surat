@@ -20,15 +20,6 @@ class Instansi extends CI_Controller {
 	    $this->load->view('template',$data);
 	}
 
-	// public function formsifat($id = 0) {
-	//     $data["judul"] = '<h3>Form Sifat Disposisi</h3>';
-	//     $data["breadcrumb"] = '<h2>Form  Sifat Disposisi</h2>';
-	//     $data["menu"] = "master";
-	//     $data["content"] = "master/sifat/vformsifat";
-	//     $data["row"] = $this->Msifat->getsifatdetail($id);
-	//     $this->load->view('template',$data);
-	// }
-
 	public function hapus_instansi($id){
         $message = $this->Minstansi->hapus_instansi($id);
         $this->session->set_flashdata("message",$message);
